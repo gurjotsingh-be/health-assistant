@@ -1,0 +1,59 @@
+symptom_analysis:
+  description: |
+    Analyze the following patient symptoms and provide a detailed assessment:
+    
+    {context}
+    
+    Your analysis should include:
+    1. Summary of reported symptoms
+    2. Potential severity assessment (mild/moderate/serious)
+    3. Possible conditions that may explain these symptoms (list top 3-5 possibilities)
+    4. Red flags or concerning symptoms that require immediate attention
+    5. Duration considerations - acute vs chronic patterns
+    
+    Be thorough but emphasize this is not a diagnosis. Present information clearly
+    without using markdown formatting like asterisks or bold text.
+  expected_output: "A comprehensive symptom analysis with potential conditions and severity assessment in plain text format"
+  agent: "symptom_analyzer"
+
+medical_research:
+  description: |
+    Based on the symptom analysis, research relevant medical information:
+    
+    {context}
+    
+    Provide:
+    1. General information about the most likely conditions identified
+    2. Common causes and risk factors for each condition
+    3. Typical progression and what to expect
+    4. General treatment approaches used for such conditions
+    5. Diagnostic tests that might be recommended
+    6. Prevention strategies if applicable
+    
+    Focus on educational information, not specific medical advice.
+    Write in clear, plain text without markdown formatting.
+  expected_output: "Evidence-based medical information about potential conditions and general treatment approaches in plain text"
+  agent: "medical_researcher"
+
+health_advice:
+  description: |
+    Provide personalized health recommendations based on the symptom analysis and research:
+    
+    {context}
+    
+    Your recommendations should include:
+    1. Immediate self-care steps the patient can take
+    2. Lifestyle modifications that may help
+    3. Home remedies or over-the-counter options (if appropriate)
+    4. Warning signs that require urgent medical attention
+    5. When and what type of healthcare provider to consult
+    6. Questions to ask their doctor
+    7. Expected timeline for improvement
+    8. Follow-up considerations
+    
+    Make recommendations practical and actionable while emphasizing the importance 
+    of professional medical consultation. Use clear, plain language without 
+    markdown formatting like asterisks or bold text.
+  expected_output: "Practical, personalized health recommendations and guidance on seeking professional care in plain text format"
+  agent: "health_advisor"
+  

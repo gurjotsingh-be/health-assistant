@@ -1,0 +1,4 @@
+flask
+crewai[google-genai]
+langchain-google-genai
+gunicorn

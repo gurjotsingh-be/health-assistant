@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Health Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🏥 AI Health Assistant</h1>
+        <p class="subtitle">Get personalized health insights from our AI-powered medical crew</p>
+        
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('consultation', event)">New Consultation</button>
+            <button class="tab-btn" onclick="showTab('history', event)">History</button>
+        </div>
+
+        <div id="consultation-tab" class="tab-content active">
+            <form id="healthForm">
+                <div class="input-group">
+                    <label for="symptoms">Describe Your Symptoms *</label>
+                    <textarea 
+                        id="symptoms" 
+                        name="symptoms" 
+                        placeholder="Please describe your symptoms in detail, including when they started, how severe they are, and any factors that make them better or worse..."
+                        required
+                    ></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="age">Your Age *</label>
+                    <input 
+                        type="number" 
+                        id="age" 
+                        name="age" 
+                        placeholder="Enter your age"
+                        min="0"
+                        max="150"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="medical_history">Medical History (Optional)</label>
+                    <textarea 
+                        id="medical_history" 
+                        name="medical_history" 
+                        placeholder="Any relevant medical conditions, medications, allergies, or previous treatments..."
+                        rows="4"
+                    ></textarea>
+                </div>
+
+                <button type="submit" id="submitBtn">Analyze Symptoms</button>
+            </form>
+
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>Analyzing your symptoms... This may take a moment.</p>
+            </div>
+
+            <div id="result" class="result">
+                <div class="result-header">
+                    <h3>Assessment Results</h3>
+                    <button class="export-btn" onclick="exportResult()">📄 Export</button>
+                </div>
+                <div id="resultContent" class="result-content"></div>
+            </div>
+        </div>
+
+        <div id="history-tab" class="tab-content">
+            <div id="history-loading" class="loading">
+                <div class="spinner"></div>
+                <p>Loading history...</p>
+            </div>
+            <div id="history-list" class="history-list"></div>
+            <div id="no-history" class="no-history" style="display: none;">
+                <p>📋 No consultation history yet. Start your first consultation!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
